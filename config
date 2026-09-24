@@ -1,0 +1,15 @@
+Squid Server
+==============================
+dnf install squid -y
+==============================
+vim /etc/squid/squid.conf
+Uncomment Line 64
+        cache_dir ufs /var/spool/squid 100 16 256
+        
+        cache_mem 128 MB
+        maximum_object_size_in_memory 256 KB
+        maximum_object_size 50 MB
+        cache_dir ufs /var/spool/squid 100000 16 256
+  =============================
+systemctl restart squid
+tail -f /var/log/squid/access.log
