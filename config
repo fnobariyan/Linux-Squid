@@ -13,3 +13,14 @@ Uncomment Line 64
   =============================
 systemctl restart squid
 tail -f /var/log/squid/access.log
+
+===============================
+#Add below Configuration for restriction 
+*attention : Squid processes http_access rules from top to bottom. Once a request matches a rule, Squid stops checking the following rules.
+Therefore, specific deny rules must be placed before broad allow rules.
+
+acl aparat dstdomain .aparat.com
+http_access deny aparat
+
+systemctl restart squid
+
